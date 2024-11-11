@@ -47,33 +47,54 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Blog Posts</h1>
-      
-      <form onSubmit={handleCreate}>
-        <h2>Create Post</h2>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button type="submit">Create</button>
-      </form>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold text-center mb-6">Blog Posts</h1>
 
-      <h2>All Posts</h2>
-      {posts.map((post) => (
-        <div key={post.id} style={{ border: "1px solid black", padding: "10px", margin: "10px" }}>
-          <h3>{post.title}</h3>
-          <p>Content: {post.content}</p>
-          <button onClick={() => handleDelete(post.id)}>Delete</button>
-        </div>
-      ))}
+        <form onSubmit={handleCreate} className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">Create Post</h2>
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div className="mb-6">
+            <textarea
+              placeholder="Content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Create
+          </button>
+        </form>
+
+        <h2 className="text-2xl font-semibold mb-4">All Posts</h2>
+        {posts.map((post) => (
+          <div
+            key={post.id}
+            className="mb-4 p-4 border border-gray-300 rounded-lg shadow-sm hover:shadow-md"
+          >
+            <h3 className="text-xl font-semibold">{post.title}</h3>
+            <p className="text-gray-600 mb-4">{post.content}</p>
+            <button
+              onClick={() => handleDelete(post.id)}
+              className="py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

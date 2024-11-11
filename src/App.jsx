@@ -1,5 +1,5 @@
 import React from 'react'
-import Frontend from './frontend'
+import Frontend from './components/frontend'
 
 const App = () => {
   return (
